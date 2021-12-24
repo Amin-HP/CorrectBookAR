@@ -28,7 +28,14 @@
   <div class="logo">
     <span>LOGO</span>
   </div>
-  <model-viewer src="./assets/sofa1.glb" poster="./assets/sofa1.webp" shadow-intensity="1" ar ar-modes="webxr scene-viewer quick-look" camera-controls alt="A 3D model carousel">
+  <model-viewer src="./assets/sofa1.glb" 
+    poster="./assets/sofa1.webp" 
+    ios-src="./assets/sofa1.usdz" 
+    shadow-intensity="1" 
+    ar-modes="webxr scene-viewer quick-look" 
+    camera-controls
+    ar 
+    alt="A 3D model carousel">
   
     <button slot="ar-button" id="ar-button">
       View in your space
@@ -59,6 +66,7 @@
       const base = "./assets/" + name;
       modelViewer.src = base + '.glb';
       modelViewer.poster = base + '.webp';
+      modelViewer['ios-src'] = base + '.usdz';
       const slides = document.querySelectorAll(".slide");
       slides.forEach((element) => {element.classList.remove("selected");});
       element.classList.add("selected");
@@ -88,7 +96,7 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      z-index: 999;
+      z-index: 10010;
       opacity: 0.8;
     }
     model-viewer {
