@@ -117,6 +117,7 @@ model-viewer {
 
 #exit-ar-button {
   background-image: url(../assets/close.png);
+  opacity: 0.9;
   display: block;
   width: 24px;
   height: 24px;
