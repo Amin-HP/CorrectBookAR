@@ -186,6 +186,10 @@ model-viewer[ar-tracking="not-tracking"] > #ar-failure {
   display: block;
 }
 
+model-viewer::part(default-exit-webxr-ar-button) {
+  float: left !important;
+}
+
 .slider {
   width: 100%;
   text-align: center;
