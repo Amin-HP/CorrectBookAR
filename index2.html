@@ -1,32 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>&lt;model-viewer&gt; template</title>
+    <title>Correct Book Catalog</title>
     <meta charset="utf-8">
-    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="description" content="Correct Book Catalog">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="./assets/styles.css" rel="stylesheet"/>
+    <link type="text/css" href="./styles/styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
+    <div class="logo">
+        <img src="assets/logo.webp">
+    </div>
     <!-- <model-viewer> HTML element -->
     <model-viewer bounds="tight" 
+        poster="assets/Floor_display.webp" 
         src="assets/Floor_display.glb" 
+        ios-src="assets/Floor_display.usdz" 
         ar ar-modes="webxr scene-viewer quick-look" 
         camera-controls 
-        poster="assets/Floor_display.webp" 
         shadow-intensity="1"
         ar-scale="fixed"
         exposure="0.85"
         environment-image="neutral">
-        <button class="Hotspot" slot="hotspot-1" data-position="-0.19505705398582557m 0.9880349599756643m 0.18634539466580846m" data-normal="0m 3.422854006504535e-8m 0.9999999999999996m" data-visibility-attribute="visible">
-            <div class="HotspotAnnotation">Detail1</div>
-        </button><button class="Hotspot" slot="hotspot-2" data-position="0.1773076703245312m 0.3964401174714096m 0.1684297838426327m" data-normal="0m 3.422854006504535e-8m 0.9999999999999994m" data-visibility-attribute="visible">
-            <div class="HotspotAnnotation">Detail2</div>
-        </button><button class="Hotspot" slot="hotspot-3" data-position="0.1645601852016041m 1.6427353644788347m -0.0012669390375316947m" data-normal="0m 3.422854006504535e-8m 0.9999999999999994m" data-visibility-attribute="visible">
-            <div class="HotspotAnnotation">Price</div>
-        </button>
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
@@ -36,9 +33,20 @@
       <div id="ar-prompt">
           <img src="assets/ar_hand_prompt.png">
       </div>
+      <button id="ar-failure">
+        AR is not tracking!
+      </button>
+      <div class="slider">
+        <div class="slides">
+          <button class="slide selected" onclick="switchSrc(this, 'Floor_display')" style="background-image: url('./assets/Floor_display.webp');"></button>
+          <button class="slide" onclick="switchSrc(this, 'Counter_display')" style="background-image: url('./assets/Counter_display.webp');"></button>
+        </div>
+      </div>
     </model-viewer>  
-    <script src="assets/script.js"></script>
+    <script src="./scripts/script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   </body>
 </html>
